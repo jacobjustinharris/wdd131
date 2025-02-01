@@ -12,7 +12,8 @@
 <body>
     <header>
         <h1>Cool Pics</h1>
-        <nav>
+    <button id="menu-toggle">☰ Menu</button> 
+    <nav id="menu">
             <ul>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#about">About</a></li>
@@ -25,18 +26,22 @@
         <section id="gallery">
             <h2>Photo Gallery</h2>
             <div class="gallery">
-                <img src="norris-full.jpeg" alt="Image 1">
-                <img src="norris-full.jpeg" alt="Image 2">
-                <img src="norris-full.jpeg" alt="Image 3">
-                <img src="norris-full.jpeg" alt="Image 4">
-                <img src="norris-full.jpeg" alt="Image 5">
-                <img src="norris-full.jpeg" alt="Image 6">
-                <img src="norris-full.jpeg" alt="Image 7">
-                <img src="norris-full.jpeg" alt="Image 8">
-                <img src="norris-full.jpeg" alt="Image 9">
+                <img src="norris-full.jpeg" alt="Image 1" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 2" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 3" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 4" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 5" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 6" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 7" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 8" class="modal-trigger">
+                <img src="norris-full.jpeg" alt="Image 9" class="modal-trigger">
             </div>
         </section>
     </main>
+    <div id="image-modal" class="modal">
+        <span id="close-modal">&times;</span>
+        <img id="modal-image">
+    </div>
     <footer>
         <p>2023 Not a Real Website</p>
     </footer>
