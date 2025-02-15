@@ -52,3 +52,18 @@ select {
     padding: 5px;
     margin-top: 10px;
 }
+.article {
+    margin-bottom: 20px;
+}
+
+.article img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.article-meta {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
