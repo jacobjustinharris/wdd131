@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Recipes">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="A page of recipes">
+    <meta property="og:image" content="img" src="german-gooseberry-cake.jpg">
+    <meta property="og:url" content="URL of the page">
+    <meta name="twitter:card" content="Here are plenty of recipes for all">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <link rel="stylesheet" href="recipes.css" />
+    <script src="recipes.js" defer></script>
+</head>
+<body>
+    <header>
+        <input type="text" id="search-bar" placeholder="Search recipes...">
+        <div class="social">
+            <a href="#"><img src="youtube_icon.svg" alt="YouTube" class="social-icon"></a>
+            <a href="#"><img src="instagram_icon.svg" alt="Instagram" class="social-icon"></a>
+            <a href="#"><img src="pinterest_icon.svg" alt="Pinterest" class="social-icon"></a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="recipe-pictures">
+            <!-- JavaScript can insert images here -->
+        </section>
+
+        <section id="recipe-content">
+            <!-- JavaScript will populate recipes here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>Recipe icons by <a href="https://www.flaticon.com/free-icons/recipe">Freepik - Flaticon</a></p>
+    </footer>
+    <script src="recipes.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const recipeImagesSection = document.querySelector("#recipe-images");
+            const recipeContentSection = document.querySelector("#recipe-container");
+
+            recipes.forEach(recipe => {
+                // Create and insert images
+                const img = document.createElement("img");
+                img.src = recipe.image;
+                img.alt = recipe.name;
+                recipeImagesSection.appendChild(img);
+
+                // Create and insert recipe content
+                const recipeDiv = document.createElement("div");
+                recipeDiv.classList.add("recipe");
+                recipeDiv.innerHTML = `
+                    <h2>${recipe.name}</h2>
+                    <p><strong>Author:</strong> ${recipe.author}</p>
+                    <p><strong>Description:</strong> ${recipe.description}</p>
+                    <p><strong>Rating:</strong> ${recipe.rating} stars</p>
+                    <p><strong>Cook Time:</strong> ${recipe.cookTime}</p>
+                    <h3>Ingredients</h3>
+                    <ul>
+                        ${recipe.recipeIngredient.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    </ul>
+                    <h3>Instructions</h3>
+                    <ol>
+                        ${recipe.recipeInstructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                    </ol>
+                `;
+                recipeContentSection.appendChild(recipeDiv);
+            });
+        });
+    </script>
+</body>
+</html>
