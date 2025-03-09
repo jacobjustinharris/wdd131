@@ -279,3 +279,51 @@ const recipes = [
 		rating: 4
 	}
 ]
+
+
+window.onload = function() {
+    const recipePictures = document.getElementById('recipe-pictures');
+    const recipeContent = document.getElementById('recipe-content');
+
+    recipes.forEach(recipe => {
+        // Create image element and append it to recipe-pictures section
+        const imgElement = document.createElement('img');
+        imgElement.src = recipe.image;
+        imgElement.alt = recipe.name;
+        imgElement.classList.add('recipe-image'); // Optionally add classes for styling
+        recipePictures.appendChild(imgElement);
+
+        // Create recipe card and append it to recipe-content section
+        const recipeCard = document.createElement('div');
+        recipeCard.classList.add('recipe');
+        
+        // Add recipe title
+        const title = document.createElement('h2');
+        title.textContent = recipe.name;
+        recipeCard.appendChild(title);
+        
+        // Add description
+        const description = document.createElement('p');
+        description.textContent = recipe.description;
+        recipeCard.appendChild(description);
+        
+        // Add author
+        const author = document.createElement('p');
+        author.textContent = `Author: ${recipe.author}`;
+        recipeCard.appendChild(author);
+
+        // Add prep time
+        const prepTime = document.createElement('p');
+        prepTime.textContent = `Prep Time: ${recipe.prepTime}`;
+        recipeCard.appendChild(prepTime);
+
+        // Add recipe yield
+        const yieldElement = document.createElement('p');
+        yieldElement.textContent = `Yield: ${recipe.recipeYield}`;
+        recipeCard.appendChild(yieldElement);
+
+        // Add recipe card to the main content section
+        recipeContent.appendChild(recipeCard);
+    });
+};
+
