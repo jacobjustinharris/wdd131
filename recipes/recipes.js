@@ -279,51 +279,128 @@ const recipes = [
 		rating: 4
 	}
 ]
+// Filter function to filter recipes based on the query
+function filter(query) {
+	const filtered = recipes.filter(recipe => 
+	  recipe.name.toLowerCase().includes(query.toLowerCase()) || 
+	  recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(query.toLowerCase()))
+	);
+	// Sort the filtered recipes by name
+	const sorted = filtered.sort((a, b) => a.name.localeCompare(b.name));
+	return sorted;
+  }
+  
+ // Function to handle search input and filter the recipes
+function searchHandler(e) {
+	e.preventDefault();
+	
+	// Get the search input value and convert it to lowercase for case-insensitive search
+	const query = document.querySelector("#search-bar").value.toLowerCase();
+  
+	// Filter the recipes based on the query
+	const filteredRecipes = filter(query);
+	
+	// Render the filtered recipes
+	renderRecipes(filteredRecipes);
+  }
+  
+  // Function to filter recipes based on the query
+  function filter(query) {
+	return recipes.filter(recipe => recipe.name.toLowerCase().includes(query));
+  }
 
+  // Function to render the recipes (update this according to your page structure)
+  function renderRecipes(recipesToRender) {
+	const recipesList = document.querySelector("#recipe-list");
+	
+	// Clear the existing list
+	recipesList.innerHTML = "";
+  
+	// If no recipes are found, display a message
+	if (recipesToRender.length === 0) {
+	  const noResultsMessage = document.createElement("p");
+	  noResultsMessage.textContent = "No recipes found.";
+	  recipesList.appendChild(noResultsMessage);
+	} else {
+	  // Render each recipe
+	  recipesToRender.forEach(recipe => {
+		const recipeItem = document.createElement("li");
+		
+		// Assuming each recipe has a name and an image
+		const recipeName = document.createElement("h3");
+		recipeName.textContent = recipe.name;
+		
+		const recipeImage = document.createElement("img");
+		recipeImage.src = recipe.imageURL;  // Assuming each recipe has an 'imageURL' property
+		recipeImage.alt = recipe.name;
+		
+		// Append name and image to the recipe item
+		recipeItem.appendChild(recipeName);
+		recipeItem.appendChild(recipeImage);
+		
+		// Append the recipe item to the list
+		recipesList.appendChild(recipeItem);
+	  });
+	}
+  }
+  
+  
 
-window.onload = function() {
-    const recipePictures = document.getElementById('recipe-pictures');
-    const recipeContent = document.getElementById('recipe-content');
+// Function to render recipes Code STOPS HERE
+function renderRecipes(recipesToShow) {
+    const recipeList = document.getElementById("recipe-list");
+    recipeList.innerHTML = ""; // Clear any existing recipes
 
-    recipes.forEach(recipe => {
-        // Create image element and append it to recipe-pictures section
-        const imgElement = document.createElement('img');
-        imgElement.src = recipe.image;
-        imgElement.alt = recipe.name;
-        imgElement.classList.add('recipe-image'); // Optionally add classes for styling
-        recipePictures.appendChild(imgElement);
+    recipesToShow.forEach(recipe => {
+        const recipeItem = document.createElement("div");
+        recipeItem.classList.add("recipe-item");
 
-        // Create recipe card and append it to recipe-content section
-        const recipeCard = document.createElement('div');
-        recipeCard.classList.add('recipe');
-        
-        // Add recipe title
-        const title = document.createElement('h2');
-        title.textContent = recipe.name;
-        recipeCard.appendChild(title);
-        
-        // Add description
-        const description = document.createElement('p');
-        description.textContent = recipe.description;
-        recipeCard.appendChild(description);
-        
-        // Add author
-        const author = document.createElement('p');
-        author.textContent = `Author: ${recipe.author}`;
-        recipeCard.appendChild(author);
+        // Recipe Image
+        const recipeImage = document.createElement("img");
+        recipeImage.classList.add("recipe-image");
+        recipeImage.src = recipe.image;
+        recipeImage.alt = recipe.name;
 
-        // Add prep time
-        const prepTime = document.createElement('p');
-        prepTime.textContent = `Prep Time: ${recipe.prepTime}`;
-        recipeCard.appendChild(prepTime);
+        // Recipe Details
+        const recipeDetails = document.createElement("div");
+        recipeDetails.classList.add("recipe-details");
 
-        // Add recipe yield
-        const yieldElement = document.createElement('p');
-        yieldElement.textContent = `Yield: ${recipe.recipeYield}`;
-        recipeCard.appendChild(yieldElement);
+        const recipeName = document.createElement("h3");
+        recipeName.classList.add("recipe-name");
+        recipeName.textContent = recipe.name;
 
-        // Add recipe card to the main content section
-        recipeContent.appendChild(recipeCard);
+        const recipeDescription = document.createElement("p");
+        recipeDescription.classList.add("recipe-description");
+        recipeDescription.textContent = recipe.description;
+
+        const recipeInstructions = document.createElement("ul");
+        recipeInstructions.classList.add("recipe-instructions");
+        recipe.recipeInstructions.forEach(instruction => {
+            const li = document.createElement("li");
+            li.textContent = instruction;
+            recipeInstructions.appendChild(li);
+        });
+
+        // Append elements to the recipe item
+        recipeDetails.appendChild(recipeName);
+        recipeDetails.appendChild(recipeDescription);
+        recipeDetails.appendChild(recipeInstructions);
+
+        recipeItem.appendChild(recipeImage);
+        recipeItem.appendChild(recipeDetails);
+
+        // Append recipe item to the list
+        recipeList.appendChild(recipeItem);
     });
-};
+}
 
+// Add event listener to the search bar
+document.querySelector("#search-form").addEventListener("submit", searchHandler);
+
+document.addEventListener("DOMContentLoaded", () => {
+	renderRecipes(recipes);
+  });
+
+
+// Call renderRecipes initially to display all recipes
+renderRecipes(recipes);

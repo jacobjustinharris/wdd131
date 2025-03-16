@@ -15,7 +15,10 @@
 </head>
 <body>
     <header>
-        <input type="text" id="search-bar" placeholder="Search recipes...">
+        <form id="search-form">
+            <input type="text" id="search-bar" placeholder="Search for recipes...">
+            <button type="submit">Search</button>
+          </form>
         <div class="social">
             <a href="#"><img src="youtube_icon.svg" alt="YouTube" class="social-icon"></a>
             <a href="#"><img src="instagram_icon.svg" alt="Instagram" class="social-icon"></a>
@@ -23,19 +26,15 @@
         </div>
     </header>
 
-    <main class="container">
-        <section id="recipe-pictures">
-            
-        </section>
-
-        <section id="recipe-content">
-            
-        </section>
-    </main>
+    <div class="container">
+        <!-- Recipe Image -->
+     
+        <!-- Recipe List -->
+        <div id="recipe-list"></div>
+    </div>
 
     <footer>
         <p>Recipe icons by <a href="https://www.flaticon.com/free-icons/recipe">Freepik - Flaticon</a></p>
     </footer>
-    <script src="recipes.js"></script>
 </body>
 </html>
