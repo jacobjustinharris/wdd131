@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uno Game</title>
+    <link rel="stylesheet" href="uno.css">
+</head>
+<body>
+    <header>
+        <h1>Uno Game</h1>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+    <main>
+        <div id="game-board">
+            <div id="ai-hand" class="hand">AI Hand: <span id="ai-count">7</span> cards</div>
+            <div id="discard-pile">Discard: <span id="top-card"></span></div>
+            <div id="player-hand" class="hand">Your Hand: <div id="player-cards"></div></div>
+            <button id="draw-card">Draw Card</button>
+        </div>
+        <p id="status">Your Turn</p>
+    </main>
+    <script src="uno.js"></script>
+    <section>
+        <h2>How to Play</h2>
+        <p>Simply try to remove the amount of cards you have until you have lost them all. That is how you win!</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Tabletop Game. All rights reserved.</p>
+    </footer>
+</body>
+</html>

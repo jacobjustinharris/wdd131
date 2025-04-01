@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 80%;
+    margin: 20px auto;
+    gap: 10px;
+}
+
+.card {
+    background: blue;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#question-box {
+    background: white;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+}

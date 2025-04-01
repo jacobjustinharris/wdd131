@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+section {
+    margin: 20px;
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.intro-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.intro-image img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.featured-games {
+    text-align: center;
+}
+
+.featured-games h2 {
+    margin-bottom: 20px;
+}
+
+.game {
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+}
+
+.game img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.game h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.community {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.community img {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.game a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.game a:hover h3 {
+    text-decoration: underline;
+    color: #555;
+}
